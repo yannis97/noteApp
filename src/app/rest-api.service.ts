@@ -46,4 +46,11 @@ export class RestApiService {
       map(this.extractData),
       catchError(this.handleError));
   }
+  deleteNote(id: string): Observable<{}> {
+    const url = `${apiUrl}/notes/${id}`;
+    return this.http.delete(url, httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
 }
