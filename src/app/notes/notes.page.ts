@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoadingController, NavController } from '@ionic/angular';
 import { RestApiService } from '../rest-api.service';
-import { ActivatedRoute, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-notes',
@@ -10,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class NotesPage implements OnInit {
   notes: any;
-  constructor(public api: RestApiService, public loadingController: LoadingController,private navCtrl: NavController) { }
+  constructor(public api: RestApiService, public loadingController: LoadingController) { }
 
   ngOnInit() {
     this.getNotes();
@@ -33,8 +33,11 @@ export class NotesPage implements OnInit {
     await loading.present();
     await this.api.deleteNote(id)
       .subscribe(res => {
+        var index = this.notes.findIndex(x => x.id === id);
+        this.notes.splice(index);
+        console.log(index);
         loading.dismiss();
-        this.navCtrl.navigateRoot('/categories');
+
       }, err => {
         console.log(err);
         loading.dismiss();
