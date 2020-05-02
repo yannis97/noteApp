@@ -8,3 +8,23 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item-sliding  *ngFor="let n of notes">
+
+      <ion-item routerLink="/note-detail/{{n.id}}">
+      {{n.title}}
+      </ion-item>
+      <ion-item-options>
+        <ion-button primary routerLink="/categories"><ion-icon name="build"></ion-icon></ion-button>
+        <ion-button color="danger" routerLink="/categories"><ion-icon name="trash"></ion-icon></ion-button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <!--
+    <div *ngIf="selectedItem" padding>
+      You navigated here from <b>{{selectedItem.title }}</b>
+    </div>
+  -->
+</ion-content>

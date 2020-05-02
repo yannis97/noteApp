@@ -3,12 +3,8 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  },
-  {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'notes',
     pathMatch: 'full'
   },
   {
@@ -18,6 +14,10 @@ const routes: Routes = [
   {
     path: 'categories',
     loadChildren: () => import('./categories/categories.module').then( m => m.CategoriesPageModule)
+  },
+  {
+    path: 'note-detail/:id',
+    loadChildren: () => import('./note-detail/note-detail.module').then( m => m.NoteDetailPageModule)
   },
 ];
 

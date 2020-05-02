@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+    <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{note.title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      Note : {{note.content}}
+    </ion-item>
+    <ion-item>
+     Date : {{note.date}}
+    </ion-item>
+    <ion-item>
+     Categorie :  {{categoryName}}
+    </ion-item>
+  </ion-list>
+</ion-content>
