@@ -23,6 +23,10 @@ const routes: Routes = [
     path: 'edit-note/:id',
     loadChildren: () => import('./edit-note/edit-note.module').then( m => m.EditNotePageModule)
   },
+  {
+    path: 'add-note',
+    loadChildren: () => import('./add-note/add-note.module').then( m => m.AddNotePageModule)
+  },
 ];
 
 @NgModule({

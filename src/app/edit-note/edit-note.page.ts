@@ -18,7 +18,8 @@ export class EditNotePage implements OnInit {
     public loadingController: LoadingController,
     private route: ActivatedRoute,
     public router: Router,
-    private formBuilder: FormBuilder) { this.getNote(this.route.snapshot.paramMap.get('id'));
+    private formBuilder: FormBuilder) { 
+    this.getNote(this.route.snapshot.paramMap.get('id'));
     this.noteForm = this.formBuilder.group({
       'title' : [null, Validators.required],
       'content' : [null, Validators.required],
@@ -60,7 +61,6 @@ export class EditNotePage implements OnInit {
   async updateNote(){
     await this.api.updateNote(this.route.snapshot.paramMap.get('id'), this.noteForm.value)
     .subscribe(res => {
-        let id = res['id'];
       }, (err) => {
         console.log(err);
       });

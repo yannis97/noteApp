@@ -8,15 +8,12 @@ import { RestApiService } from '../rest-api.service';
   templateUrl: './notes.page.html',
   styleUrls: ['./notes.page.scss'],
 })
-export class NotesPage implements OnInit {
+export class NotesPage {
   public notes: any;
   constructor(public api: RestApiService, public loadingController: LoadingController,) { }
 
-  ngOnInit() {
-    this.getNotes();
-  }
   ionViewWillEnter(){
-    this.ngOnInit();
+    this.getNotes();
   }
   async getNotes() {
     const loading = await this.loadingController.create();
@@ -36,20 +33,10 @@ export class NotesPage implements OnInit {
     await loading.present();
     await this.api.deleteNote(id)
       .subscribe(res => {
-        var index = this.notes.findIndex(x => x.id === id);
-        this.notes.splice(index);
-        console.log(index);
         loading.dismiss();
-
       }, err => {
         console.log(err);
         loading.dismiss();
       });
-  }
-  test(id){
-    console.log("Test en cours");
-    var index = this.notes.findIndex(x => x.id === id);
-    this.notes.splice(index);
-    console.log(index);
   }
 }

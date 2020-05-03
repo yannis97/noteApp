@@ -1,9 +1,9 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button routerLink="/notes"></ion-back-button>
+      <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Editer une Note</ion-title>
+    <ion-title>Ajouter une Note</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -19,14 +19,12 @@
     </ion-item>
     <ion-item>
       <ion-label position="floating">Catégorie : </ion-label>
-      <ion-input formGroupName="category">
-      <ion-select formControlName="name">
-          <ion-select-option  *ngFor="let cat of categories" value={{cat.name}} >{{cat.name}}</ion-select-option>
+      <ion-select formControlName="category">
+          <ion-select-option  *ngFor="let cat of categories" value={{cat.id}}>{{cat.name}}</ion-select-option>
       </ion-select>
-      </ion-input>
   </ion-item>
-    <ion-fab  vertical="center" horizontal="center" slot="fixed">
-      <ion-fab-button shape="square" color="primary" [disabled]="!noteForm.valid" (click)="updateNote()"><ion-icon name="send"></ion-icon></ion-fab-button>
-    </ion-fab>
+  <ion-fab  vertical="center" horizontal="center" slot="fixed">
+    <ion-fab-button shape="square" color="primary" [disabled]="!noteForm.valid" (click)="addNote()"><ion-icon name="send"></ion-icon></ion-fab-button>
+  </ion-fab>
   </form>
 </ion-content>

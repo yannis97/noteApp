@@ -60,11 +60,18 @@ export class RestApiService {
         catchError(this.handleError)
       );
   }
-
+  postNote(data): Observable<any> {
+    const url = `${apiUrl}/notes`;
+    return this.http.post(url, data, httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
   getCategories(): Observable<any> {
     const url = `${apiUrl}/categories`;
     return this.http.get(url, httpOptions).pipe(
       map(this.extractData),
       catchError(this.handleError));
   }
+  
 }
