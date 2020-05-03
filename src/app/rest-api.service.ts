@@ -73,5 +73,11 @@ export class RestApiService {
       map(this.extractData),
       catchError(this.handleError));
   }
-  
+  deleteCategorie(id: string): Observable<{}> {
+    const url = `${apiUrl}/categories/${id}`;
+    return this.http.delete(url, httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
 }

@@ -26,4 +26,15 @@ export class CategoriesPage {
         loading.dismiss();
       });
   }
+  async deleteCategorie(id) {
+    const loading = await this.loadingController.create();
+    await loading.present();
+    await this.api.deleteCategorie(id)
+      .subscribe(res => {
+        loading.dismiss();
+      }, err => {
+        console.log(err);
+        loading.dismiss();
+      });
+  }
 }
