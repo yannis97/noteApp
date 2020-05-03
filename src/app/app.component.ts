@@ -36,7 +36,7 @@ export class AppComponent {
         icon  : "mail"
       },
       {
-        title : "Categories",
+        title : "Catégories",
         url   : "/categories",
         icon  : "folder"
       },

@@ -4,7 +4,26 @@
       <ion-menu-button></ion-menu-button>
       </ion-buttons>
     <ion-title>
-      Categories
+      Catégories
     </ion-title>
   </ion-toolbar>
 </ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item-sliding  *ngFor="let cat of categories">
+      <ion-item>
+      {{cat.name}}
+      </ion-item>
+      <ion-item-options>
+        <ion-button primary routerLink="/categories"><ion-icon name="build"></ion-icon></ion-button>
+        <ion-button color="danger"><ion-icon name="trash"></ion-icon></ion-button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="/add-note">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

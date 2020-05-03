@@ -9,7 +9,7 @@ import { RestApiService } from '../rest-api.service';
   styleUrls: ['./notes.page.scss'],
 })
 export class NotesPage {
-  public notes: any;
+  notes: any;
   constructor(public api: RestApiService, public loadingController: LoadingController,) { }
 
   ionViewWillEnter(){
