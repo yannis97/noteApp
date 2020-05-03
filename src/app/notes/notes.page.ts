@@ -34,7 +34,7 @@ export class NotesPage {
     await this.api.deleteNote(id)
       .subscribe(res => {
         var index = this.notes.findIndex(x => x.id === id)
-        this.notes.splice(index);
+        this.notes.splice(index,1);
         loading.dismiss();
       }, err => {
         console.log(err);

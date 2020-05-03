@@ -33,7 +33,7 @@ export class CategoriesPage {
     await this.api.deleteCategory(id)
       .subscribe(res => {
         var index = this.categories.findIndex(x => x.id === id)
-        this.categories.splice(index);
+        this.categories.splice(index,1);
         loading.dismiss();
       }, err => {
         console.log(err);
