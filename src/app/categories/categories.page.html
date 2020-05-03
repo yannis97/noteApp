@@ -16,13 +16,13 @@
       {{cat.name}}
       </ion-item>
       <ion-item-options>
-        <ion-button primary routerLink="/categories"><ion-icon name="build"></ion-icon></ion-button>
-        <ion-button color="danger"><ion-icon name="trash"></ion-icon></ion-button>
+        <ion-button primary routerLink="/edit-category/{{cat.id}}"><ion-icon name="build"></ion-icon></ion-button>
+        <ion-button color="danger" (click)="deleteCategorie(cat.id)"><ion-icon name="trash"></ion-icon></ion-button>
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button routerLink="/add-note">
+    <ion-fab-button routerLink="/edit-category/0">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

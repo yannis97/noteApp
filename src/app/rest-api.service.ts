@@ -73,11 +73,31 @@ export class RestApiService {
       map(this.extractData),
       catchError(this.handleError));
   }
-  deleteCategorie(id: string): Observable<{}> {
+  deleteCategory(id: string): Observable<{}> {
     const url = `${apiUrl}/categories/${id}`;
     return this.http.delete(url, httpOptions)
       .pipe(
         catchError(this.handleError)
       );
+  }
+  postCategory(data): Observable<any> {
+    const url = `${apiUrl}/categories`;
+    return this.http.post(url, data, httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+  updateCategory(id: string, data): Observable<any> {
+    const url = `${apiUrl}/categories/${id}`;
+    return this.http.put(url, data, httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+  getCategoryById(id: string): Observable<any> {
+    const url = `${apiUrl}/categories/${id}`;
+    return this.http.get(url, httpOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
   }
 }

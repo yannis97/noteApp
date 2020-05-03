@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoadingController, NavController } from '@ionic/angular';
 import { RestApiService } from '../rest-api.service';
+import { ActivatedRoute, Router  } from '@angular/router';
 @Component({
   selector: 'app-categories',
   templateUrl: './categories.page.html',
@@ -8,7 +9,7 @@ import { RestApiService } from '../rest-api.service';
 })
 export class CategoriesPage {
   categories: any;
-  constructor(public api: RestApiService, public loadingController: LoadingController,) { }
+  constructor(public api: RestApiService, public loadingController: LoadingController, public router: Router) { }
 
   ionViewWillEnter(){
     this.getCategories();
@@ -29,8 +30,10 @@ export class CategoriesPage {
   async deleteCategorie(id) {
     const loading = await this.loadingController.create();
     await loading.present();
-    await this.api.deleteCategorie(id)
+    await this.api.deleteCategory(id)
       .subscribe(res => {
+        var index = this.categories.findIndex(x => x.id === id)
+        this.categories.splice(index);
         loading.dismiss();
       }, err => {
         console.log(err);
