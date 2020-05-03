@@ -11,6 +11,7 @@ import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Valida
 })
 export class EditNotePage implements OnInit {
   categories: any;
+  noteId: any;
   noteForm: FormGroup;
   //category: FormArray;
   constructor(public api: RestApiService,
@@ -30,6 +31,7 @@ export class EditNotePage implements OnInit {
   ngOnInit() {
   }
   async getNote(id) {
+    this.noteId = id;
     const loading = await this.loadingController.create();
     await loading.present();
     await this.api.getCategories()
@@ -59,9 +61,9 @@ export class EditNotePage implements OnInit {
     await this.api.updateNote(this.route.snapshot.paramMap.get('id'), this.noteForm.value)
     .subscribe(res => {
         let id = res['id'];
-        this.router.navigate(['/notes', JSON.stringify(id)]);
       }, (err) => {
         console.log(err);
       });
+      this.router.navigate(["/notes"]);
   }
 }

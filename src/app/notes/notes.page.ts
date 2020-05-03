@@ -9,11 +9,14 @@ import { RestApiService } from '../rest-api.service';
   styleUrls: ['./notes.page.scss'],
 })
 export class NotesPage implements OnInit {
-  notes: any;
-  constructor(public api: RestApiService, public loadingController: LoadingController) { }
+  public notes: any;
+  constructor(public api: RestApiService, public loadingController: LoadingController,) { }
 
   ngOnInit() {
     this.getNotes();
+  }
+  ionViewWillEnter(){
+    this.ngOnInit();
   }
   async getNotes() {
     const loading = await this.loadingController.create();
